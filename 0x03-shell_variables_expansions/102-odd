@@ -1,2 +1,1 @@
 #!/bin/bash
-paser -d, - - | cut -d, -f1
