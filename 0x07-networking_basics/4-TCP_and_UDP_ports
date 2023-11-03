@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
+# includes listening socktes and displays ports
+
 netstat -l --program
