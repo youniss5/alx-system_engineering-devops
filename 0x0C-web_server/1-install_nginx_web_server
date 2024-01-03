@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # install web server
 apt-get update
+
 apt-get install -y nginx
+
 mkdir /etc/nginx/html
 touch /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
@@ -13,4 +15,5 @@ printf %s "server {
      index       index.html index.htm;
 }
 " > /etc/nginx/sites-available/default
+
 service nginx restart
