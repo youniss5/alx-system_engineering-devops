@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-# all users must be on 8080 port
-# change from port 80 to 8080
-chown nginx:nginx /etc/nginx/nginx.conf
-chown nginx:nginx /etc/nginx/sites-available/default
-chmod u+rwx /etc/nginx/nginx.conf
+#all users must be on 8080 port
 sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
-sed -i "s/80/8080/" /etc/nginx/sites-available/default
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+pkill apache2
