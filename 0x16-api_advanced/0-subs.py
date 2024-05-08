@@ -8,14 +8,13 @@ import requests
 
 def number_of_subscribers(subreddit):
     """ Returns number of subscribers """
-    if subreddit is None or type(subreddit) is not str:
-        return (0)
-
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    head = {'User-Agent': 'my-app'}
-    response = requests.get(url, headers=head, allow_redirects=False)
 
-    try:
-        return (response.json().get("data").get("subscribers"))
-    except Exception:
-        return (0)
+    headers = requests.utils.default_headers()
+    headers.update({'User-Agent': 'My User Agent 1.0'})
+
+    r = requests.get(url, headers=headers).json()
+    subscribers = r.get('data', {}).get('subscribers')
+    if not subscribers:
+        return 0
+    return subscribers
