@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that queries API & returns the numb of subscribers
+Script that queries API
 """
 
 import requests
