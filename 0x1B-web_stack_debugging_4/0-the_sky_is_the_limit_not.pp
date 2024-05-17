@@ -2,16 +2,16 @@
 
 #ULIMIT increase
 exec { 'fix--for-nginx':
-# increase the ULIMIT
+  # increase the ULIMIT
   command => 'bin/sed -i "s/15/4096/" /etc/default/nginx',
-#Path
+  #Path
   path    => '/usr/local/bin/:/bin/'
 } ->
 
 # (Nginx) Restart.
 exec { 'nginx-restart':
-#Restart
+  # Restart
   command => 'etc/init.d/nginx restart',
-#Path
+  # Path
   path    => '/etc/init.d/'
 }
