@@ -1,17 +1,10 @@
 #increase Nginx server handling 
 
-#ULIMIT increase
-exec { 'fix--for-nginx':
-  # increase the ULIMIT
-  command => 'bin/sed -i "s/15/4096/" /etc/default/nginx',
-  #Path
-  path    => '/usr/local/bin/:/bin/'
-} ->
-
-# (Nginx) Restart.
-exec { 'nginx-restart':
-  # Restart
-  command => 'etc/init.d/nginx restart',
-  # Path
-  path    => '/etc/init.d/'
+#ULIMIT increasei
+exec { 'set limit to 2000':
+  path    => '/bin',
+  command => "sed -i 's/15/2000/' /etc/default/nginx"
+}
+exec { 'reboot nginx':
+  command => '/usr/sbin/service nginx restart'
 }
