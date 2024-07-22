@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #install the ufw firewall and setup a few rules on web-01
+
 apt-get install ufw
 sudo apt install ufw
 sudo apt default allow outgoing
